@@ -22,15 +22,63 @@ The Airbnb Clone Project is part of the ALX Backend Blueprint. It simulates the 
 - **Docker:** For containerization.  
 - **GitHub Actions:** For CI/CD automation.  
 
----
 
-## Database Design
-**Entities:**  
-- **User:** id, username, email, password  
-- **Property:** id, title, price, owner_id  
-- **Booking:** id, user_id, property_id, check_in, check_out  
-- **Review:** id, user_id, property_id, rating, comment  
-- **Payment:** id, booking_id, amount, status  
+# Database Design
+
+## Entities
+
+### 1. User
+- id (Primary Key)
+- username
+- email
+- password
+- date_joined
+
+### 2. Property
+- id (Primary Key)
+- title
+- description
+- price_per_night
+- location
+- owner_id (Foreign Key → User)
+
+### 3. Booking
+- id (Primary Key)
+- user_id (Foreign Key → User)
+- property_id (Foreign Key → Property)
+- check_in_date
+- check_out_date
+- total_price
+
+### 4. Review
+- id (Primary Key)
+- user_id (Foreign Key → User)
+- property_id (Foreign Key → Property)
+- rating
+- comment
+
+### 5. Payment
+- id (Primary Key)
+- booking_id (Foreign Key → Booking)
+- amount
+- payment_status
+- payment_date
+
+## Relationships
+- A **User** can have multiple **Properties**.  
+- A **Booking** belongs to one **Property** and one **User**.  
+- A **Property** can have multiple **Reviews**.  
+- A **Booking** can have one **Payment**.
+
+
+
+
+  ## Feature Breakdown
+- **User Authentication** – Handles login, signup, and password reset.
+- **Dashboard** – Displays user-specific information after login.
+- **Notifications** – Alerts users about new updates or tasks.
+- **Reporting Module** – Generates detailed user activity reports.
+- **Admin Panel** – Enables admins to manage users and settings.  
 
 **Relationships:**  
 - A user owns many properties.  
